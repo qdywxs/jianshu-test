@@ -1,7 +1,15 @@
 import { createStore } from "redux"; 
 
-import reducer from "./reducer";  /*🚀从当前目录下的 reducer.js 引入 reducer。*/
+import reducer from "./reducer"; 
 
-const store = createStore(reducer);  /*❗️❗️❗️将 reducer 作为第一个“参数”传递给“方法”createStore！*/
+const store = createStore(
+  reducer,
+  
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);  /*🚀粘贴过来的这行代码表示：如果 window 下边有 __REDUX_DEVTOOLS_EXTENSION__ 这个变量的话，
+    就执行这个变量对应的方法 window.__REDUX_DEVTOOLS_EXTENSION__()。
+    
+    即，若安装了这个工具，就在页面去使用这个工具！
+    */
 
 export default store; 
