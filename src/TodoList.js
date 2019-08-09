@@ -7,7 +7,8 @@ import "./style.css";
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = {  /*1️⃣-①：一旦 state 发生改变（我们可以在页面的 input 框输入任意内容，
+                    来使 state 发生改变），*/
       inputValue: "", 
       list: []
     };
@@ -18,7 +19,10 @@ class TodoList extends Component {
     
   }
 
-  render() {
+  render() {  /*1️⃣-②：render 函数就会重新执行（即，重新用新的数据渲染页面）。*/
+    console.log("render")  /*1️⃣-③：为了演示 render 函数确实执行了，
+                           我们让控制台给我们实时打印一些信息。*/
+    
     return(
       <Fragment>
         <div>
@@ -49,11 +53,11 @@ class TodoList extends Component {
     return this.state.list.map((item, index) => { 
       return( 
         <TodoItem 
-          key={index}
+        key={index}
         
-          content={item}
-          index={index} 
-          itemDelete={this.handleItemDelete}
+        content={item}
+        index={index} 
+        itemDelete={this.handleItemDelete}
         />  
       )  
     })

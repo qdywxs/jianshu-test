@@ -10,11 +10,25 @@ class TodoItem extends Component {
   } 
   
   render() {
-    const {content, test} = this.props 
+    console.log("TodoItem render")  /*2️⃣-③：在页面 input 框输入内容并点击“提交”后，
+                                    子组件的 render 函数都会相应执行。
+                               ❗️❗️❗️其原因有二：
+                               第一，子组件的 content 是从父组件接收的，在父组件 TodoList 里，
+                               content 的值是“列表循环出的每一项”。故，当我们输入内容并提交后，
+                               “列表循环出的每一项”会随之变化，继而子组件接收到的属性也会变化，
+                               子组件的 render 函数相应地会根据新的值进行重新渲染；
+                                      
+                               第二，当父组件的 render 函数被运行时，它的子组件的 render 函数
+                               都将被运行一次！
+                               因为，子组件 TodoItem 是被父组件 TodoList 的 render 渲染出来的，
+                               那么，父组件的 render 在被重新执行时，子组件的 render 也会被执行。
+                               */
+    
+    const {content, test} = this.props  /*2️⃣-①：this.props 是父组件通过“属性”传递过来的内容；*/
     
     return(
       <div onClick={this.handleClick}> 
-      {test}{content}  
+      {test}{content}  {/*2️⃣-②：我们将内容项 content 展示在页面；*/}
       </div>
     )
   }
@@ -35,12 +49,9 @@ TodoItem.propTypes = {
   index: PropTypes.number
 }
 
-TodoItem.defaultProps = {  /*2️⃣-①：给 TodoItem 增添一些“默认属性”；*/
+TodoItem.defaultProps = {
   
-  test: "hello, "  /*2️⃣-②：比如增加一个默认属性 test，其值为 "hello, " 。
-                   表示，即使父组件没办法给我子组件传递这个 test 属性，我子组件依然能够
-                   使用 test 属性，因为我自己定义了一个“默认值”。
-                   */
+  test: "hello, " 
 }
 
 export default TodoItem;
