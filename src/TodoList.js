@@ -7,7 +7,7 @@ import "./style.css";
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       inputValue: "", 
       list: []
     };
@@ -18,8 +18,14 @@ class TodoList extends Component {
     
   }
 
-  render() { 
-    console.log("render") 
+  componentWillMount() {
+    
+    console.log("componentWillMount") 
+  }
+  
+  render() {  /*3️⃣-③：“生命周期函数”render 会执行，根据变化了的“数据”，
+              重新“更新”页面；*/
+    console.log("parent render")
     
     return(
       <Fragment>
@@ -46,14 +52,39 @@ class TodoList extends Component {
       </Fragment>
     )
   }
+  
+  componentDidMount() {  
+  
+    console.log("componentDidMount")  
+  }
+
+  shouldComponentUpdate() {  /*3️⃣-①：这个“生命周期函数”是在“组件”
+                             被“更新”之前，会被自动执行；*/
+    
+    console.log("shouldComponentUpdate")
+    return true
+    
+  }
+
+  componentWillUpdate() {  /*3️⃣-②：这个“生命周期函数”是在“组件”
+                           被“更新”之前，shouldComponentUpdate 询问之后，
+                           且得到 true 的“答复”后，才自动执行；*/
+  
+    console.log("componentWillUpdate")
+  }
+
+  componentDidUpdate() {  /*3️⃣-④：这个“生命周期函数”是在“组件”
+                          被“更新”完成之后，会自动执行。*/
+    
+    
+    console.log("componentDidUpdate")
+  }
 
   getTodoItem() {
     return this.state.list.map((item, index) => { 
       return( 
-        
-        /*✅4️⃣用 item 作为 key 值；*/
         <TodoItem 
-        key={item}
+        key={index}
         
         content={item}
         index={index} 
@@ -73,7 +104,7 @@ class TodoList extends Component {
 
   handleBtnClick() {
     this.setState((prevState) => ({
-      list: [...prevState.list, prevState.inputValue],
+      list: [...prevState.list, prevState.inputValue],  
       inputValue: ""        
     }))
   }
