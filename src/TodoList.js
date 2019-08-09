@@ -1,15 +1,12 @@
 import React, {Component} from "react";
 import 'antd/dist/antd.css';
-
-/*3️⃣-②：把 Antd Design 关于“页面渲染”的内容剪切；
-import { Input, Button, List } from 'antd';  
-*/
-
 import store from "./store";
-import {getInputChangeAction, getAddItemAction, getDeleteItemAction} from "./store/actionCreators"; 
+
+import {getInputChangeAction, getAddItemAction, getDeleteItemAction, initListAction} from "./store/actionCreators"; 
 
 import TodoListUI from "./TodoListUI"; 
 
+import axios from "axios";
 
 class TodoList extends Component {
   constructor(props) {
@@ -22,8 +19,7 @@ class TodoList extends Component {
     this.handleStoreChange = this.handleStoreChange.bind(this);  
     
     this.handleButtonClick = this.handleButtonClick.bind(this); 
-    
-    /*3️⃣-⑱：在这里对 handleItemDelete 方法的 this 指向作一个修改*/
+
     this.handleItemDelete = this.handleItemDelete.bind(this);
     
     store.subscribe(this.handleStoreChange);  
@@ -32,9 +28,6 @@ class TodoList extends Component {
   
   render() {
     return(
-      
-      /*3️⃣-⑤、3️⃣-⑧、3️⃣-⑪、3️⃣-⑭、3️⃣-⑰：
-      通过“属性”的形式传值给 TodoListUI 组件；*/
       <TodoListUI
         inputValue={this.state.inputValue}
         list={this.state.list}  
@@ -45,6 +38,19 @@ class TodoList extends Component {
     )
   }
   
+  componentDidMount() { 
+    axios.get("http://yapi.demo.qunar.com/mock/82169/api/todolist")  
+    
+    .then((res) => {  
+      const data = res.data;  
+      const action = initListAction(data);  
+      
+      store.dispatch(action);  /*❗️❗️❗️调用 store 的 dispatch 方法，
+                               将 action 发送给 store；*/
+    })
+    
+    .catch(() => {alert("error")})  
+  } 
   
   handleInputChange(e) { 
 
