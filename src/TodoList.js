@@ -7,7 +7,7 @@ import "./style.css";
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {  
       inputValue: "", 
       list: []
     };
@@ -18,8 +18,7 @@ class TodoList extends Component {
     
   }
 
-  render() { 
-    console.log("render") 
+  render() {  
     
     return(
       <Fragment>
@@ -32,14 +31,16 @@ class TodoList extends Component {
             className="input"
             value={this.state.inputValue}
             onChange={this.handleInputChange}
-          />
 
+            ref = {(input) => {this.input = input}}
+          />
           <button onClick={this.handleBtnClick}>
             提交
           </button>
+
         </div>
 
-        <ul>
+        <ul ref={(ul) => {this.ul = ul}}> 
           {this.getTodoItem()}
         </ul>
 
@@ -50,8 +51,6 @@ class TodoList extends Component {
   getTodoItem() {
     return this.state.list.map((item, index) => { 
       return( 
-        
-        /*✅4️⃣用 item 作为 key 值；*/
         <TodoItem 
         key={item}
         
@@ -63,8 +62,8 @@ class TodoList extends Component {
     })
   }
   
-  handleInputChange(e) {
-    const value = e.target.value
+  handleInputChange() {
+    const value = this.input.value
     
     this.setState(() => ({
       inputValue: value
@@ -75,7 +74,12 @@ class TodoList extends Component {
     this.setState((prevState) => ({
       list: [...prevState.list, prevState.inputValue],
       inputValue: ""        
-    }))
+    }), () => {
+      console.log(this.ul.querySelectorAll("div").length)
+    })  /*❓第二个“函数”形式的“参数”什么时候执行呢？
+        答：会等到 setState 这个“异步”的方法完全执行好了后，
+        作为“回调函数”的第二个参数才会被执行。*/
+    
   }
 
   handleItemDelete(index) { 
