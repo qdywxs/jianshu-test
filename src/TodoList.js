@@ -1,12 +1,28 @@
-import React, { Component, Fragment } from "react";  //🚀先引入 Fragment；
+import React, { Component, Fragment } from "react"; 
 
 class TodoList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      inputValue: "", 
+      list: []
+    };
+  }
+
   render() {
     return(
-      
-      /*🚀再用 Fragment 替代 div。*/
+
       <Fragment>
-        <div><input /><button>提交</button></div>
+        <div>
+      
+          <input 
+            value={this.state.inputValue}
+            onChange={this.handleInputChange.bind(this)}
+          />
+
+          <button>提交</button>
+        </div>
         <ul>
           <li>React 初识</li>
           <li>React 入门</li>
@@ -14,6 +30,15 @@ class TodoList extends Component {
         </ul>
       </Fragment>
     )
+  }
+
+  handleInputChange(e) {
+    //console.log(e.target.value)
+    this.setState({
+      inputValue: e.target.value  /*🚀我们需要改变 inputValue 这个数据项，
+                                  使其内容为 e.target.value。
+                                  */
+    })
   }
 }
 
