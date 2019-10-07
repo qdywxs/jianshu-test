@@ -76,10 +76,7 @@ class TodoList extends Component {
       inputValue: ""        
     }), () => {
       console.log(this.ul.querySelectorAll("div").length)
-    })  /*❓第二个“函数”形式的“参数”什么时候执行呢？
-        答：会等到 setState 这个“异步”的方法完全执行好了后，
-        作为“回调函数”的第二个参数才会被执行。*/
-    
+    })
   }
 
   handleItemDelete(index) { 

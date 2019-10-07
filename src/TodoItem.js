@@ -11,11 +11,11 @@ class TodoItem extends Component {
   
   render() {
     
-    const {content, test} = this.props  /*2️⃣-①：this.props 是父组件通过“属性”传递过来的内容；*/
+    const {content, test} = this.props
     
     return(
       <div onClick={this.handleClick}> 
-      {test}{content}  {/*2️⃣-②：我们将内容项 content 展示在页面；*/}
+      {test}{content}
       </div>
     )
   }
