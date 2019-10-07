@@ -19,8 +19,6 @@ class TodoList extends Component {
   }
 
   render() { 
-    console.log("render") 
-    
     return(
       <Fragment>
         <div>
@@ -50,8 +48,6 @@ class TodoList extends Component {
   getTodoItem() {
     return this.state.list.map((item, index) => { 
       return( 
-        
-        /*✅4️⃣用 item 作为 key 值；*/
         <TodoItem 
         key={item}
         
