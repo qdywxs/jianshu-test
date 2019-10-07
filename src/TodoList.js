@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from "react";  //🚀先引入 Fragment；
+import React, { Component, Fragment } from "react";
 
 class TodoList extends Component {
   render() {
     return(
-      
-      /*🚀再用 Fragment 替代 div。*/
       <Fragment>
         <div><input /><button>提交</button></div>
         <ul>
