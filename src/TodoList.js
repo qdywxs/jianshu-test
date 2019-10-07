@@ -34,7 +34,7 @@ class TodoList extends Component {
         </div>
         <ul>
           {
-            this.state.list.map((item, index)=>{ 
+            this.state.list.map((item, index) => { 
               return( 
                 <li 
                   key={index} 
