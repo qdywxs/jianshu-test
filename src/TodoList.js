@@ -5,7 +5,6 @@ import { Input, Button, List } from 'antd';
 
 import store from "./store";
 
-/*3️⃣-①：引入“常量”；*/
 import {CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM} from "./store/actionTypes"; 
 
 class TodoList extends Component {
@@ -50,7 +49,6 @@ class TodoList extends Component {
     )
   }
   
-  /*3️⃣-②：用“常量”替换掉“字符串”；*/
   handleInputChange(e) { 
     const action = {
       type: CHANGE_INPUT_VALUE, 
