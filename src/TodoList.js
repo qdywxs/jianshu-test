@@ -39,17 +39,16 @@ class TodoList extends Component {
   }
   
   componentDidMount() { 
-    axios.get("http://yapi.demo.qunar.com/mock/82169/api/todolist")  
+    axios.get("http://rap2api.taobao.org/app/mock/232799/api/todolist")  
     
     .then((res) => {  
-      const data = res.data;  
+      const data = res.data.data;  
       const action = initListAction(data);  
       
-      store.dispatch(action);  /*❗️❗️❗️调用 store 的 dispatch 方法，
-                               将 action 发送给 store；*/
+      store.dispatch(action);
     })
     
-    .catch(() => {alert("error")})  
+    .catch(() => {alert("error")})
   } 
   
   handleInputChange(e) { 
