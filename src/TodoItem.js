@@ -27,9 +27,7 @@ class TodoItem extends Component {
     console.log("child componentWillReciveProps")
   }
 
-  componentWillUnmount() {  /*4️⃣这个“生命周期函数”是在“组件”
-                            即将被程序从页面上剔除时，会自动执行。*/
-  
+  componentWillUnmount() {
     console.log("child componentWillUnmount")
   }
 

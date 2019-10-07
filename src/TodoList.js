@@ -19,12 +19,10 @@ class TodoList extends Component {
   }
 
   componentWillMount() {
-    
     console.log("componentWillMount") 
   }
   
-  render() {  /*3️⃣-③：“生命周期函数”render 会执行，根据变化了的“数据”，
-              重新“更新”页面；*/
+  render() {
     console.log("parent render")
     
     return(
@@ -54,29 +52,20 @@ class TodoList extends Component {
   }
   
   componentDidMount() {  
-  
     console.log("componentDidMount")  
   }
 
-  shouldComponentUpdate() {  /*3️⃣-①：这个“生命周期函数”是在“组件”
-                             被“更新”之前，会被自动执行；*/
-    
+  shouldComponentUpdate() {
     console.log("shouldComponentUpdate")
     return true
     
   }
 
-  componentWillUpdate() {  /*3️⃣-②：这个“生命周期函数”是在“组件”
-                           被“更新”之前，shouldComponentUpdate 询问之后，
-                           且得到 true 的“答复”后，才自动执行；*/
-  
+  componentWillUpdate() { 
     console.log("componentWillUpdate")
   }
 
-  componentDidUpdate() {  /*3️⃣-④：这个“生命周期函数”是在“组件”
-                          被“更新”完成之后，会自动执行。*/
-    
-    
+  componentDidUpdate() {
     console.log("componentDidUpdate")
   }
 
