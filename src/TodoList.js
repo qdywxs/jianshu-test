@@ -73,11 +73,11 @@ class TodoList extends Component {
     return this.state.list.map((item, index) => { 
       return( 
         <TodoItem 
-        key={index}
-        
-        content={item}
-        index={index} 
-        itemDelete={this.handleItemDelete}
+          key={index}
+          
+          content={item}
+          index={index} 
+          itemDelete={this.handleItemDelete}
         />  
       )  
     })
