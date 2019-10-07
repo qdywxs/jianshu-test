@@ -33,11 +33,8 @@ class TodoList extends Component {
   }
 
   handleInputChange(e) {
-    //console.log(e.target.value)
     this.setState({
-      inputValue: e.target.value  /*🚀我们需要改变 inputValue 这个数据项，
-                                  使其内容为 e.target.value。
-                                  */
+      inputValue: e.target.value
     })
   }
 }
