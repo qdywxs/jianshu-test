@@ -52,11 +52,11 @@ class TodoList extends Component {
       return( 
         
         <TodoItem 
-        key={item}
-        
-        content={item}
-        index={index} 
-        itemDelete={this.handleItemDelete}
+          key={item}
+          
+          content={item}
+          index={index} 
+          itemDelete={this.handleItemDelete}
         />  
       )  
     })
