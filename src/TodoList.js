@@ -51,7 +51,6 @@ class TodoList extends Component {
     return this.state.list.map((item, index) => { 
       return( 
         
-        /*✅4️⃣用 item 作为 key 值；*/
         <TodoItem 
         key={item}
         
