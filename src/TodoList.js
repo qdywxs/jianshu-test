@@ -50,7 +50,6 @@ class TodoList extends Component {
       return( 
         <TodoItem 
           key={index}
-        
           content={item}
           index={index} 
           itemDelete={this.handleItemDelete}
