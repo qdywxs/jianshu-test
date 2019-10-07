@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 
 import TodoItem from "./TodoItem"; 
 
-import axios from "axios";  /*🚀引入 axios 模块。*/
+import axios from "axios";
 
 import "./style.css"; 
 
@@ -48,13 +48,12 @@ class TodoList extends Component {
   }
 
   componentDidMount() { 
-    axios.get("http://yapi.demo.qunar.com/mock/82169/api/todolist")  
+    axios.get("http://rap2api.taobao.org/app/mock/232799/api/todolist")  
     
       .then((res) => {
         
-        this.setState(() => ({  /*4️⃣-④：调用 setState 方法，传入一个“箭头函数”，
-                                让“数据项”list 的值为 res.data。*/
-          list: [...res.data]
+        this.setState(() => ({
+          list: [...res.data.data]
         }))
       
       })
@@ -66,12 +65,12 @@ class TodoList extends Component {
     return this.state.list.map((item, index) => { 
       return( 
         <TodoItem 
-        key={index}
-        
-        content={item}
-        index={index} 
-        itemDelete={this.handleItemDelete}
-        />  
+          key={index}
+          
+          content={item}
+          index={index} 
+          itemDelete={this.handleItemDelete}
+        />
       )  
     })
   }
