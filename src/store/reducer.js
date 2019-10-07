@@ -1,4 +1,3 @@
-/*3️⃣-③：引入“常量”；*/
 import {CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM} from "./actionTypes";  
 
 const defaultState = { 
@@ -6,7 +5,6 @@ const defaultState = {
   list: []
 };
 
-/*3️⃣-④：用“常量”替换掉“字符串”；*/
 export default (state = defaultState, action) => { 
   
   if(action.type === CHANGE_INPUT_VALUE) {  
